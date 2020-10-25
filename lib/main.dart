@@ -6,7 +6,15 @@ void main() {
   ));
 }
 
-class SanjuronCard extends StatelessWidget {
+class SanjuronCard extends StatefulWidget {
+  @override
+  _SanjuronCardState createState() => _SanjuronCardState();
+}
+
+class _SanjuronCardState extends State<SanjuronCard> {
+
+  int sanjuronLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +24,15 @@ class SanjuronCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.green[700],
         elevation: 0.0, // pour supprimer l'effet d'ombre
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            sanjuronLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.green[700],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -59,7 +76,7 @@ class SanjuronCard extends StatelessWidget {
             ),
             SizedBox(height: 10.0),
             Text(
-              '8',
+              '$sanjuronLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2.0,
